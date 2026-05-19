@@ -219,7 +219,6 @@ install_packages() {
         sddm qt6-svg
 
         # Wallpaper / theming
-        swww matugen
 
         # Boot / Plymouth
         plymouth
@@ -236,23 +235,44 @@ install_packages() {
         # Utils
         git curl wget unzip tar gzip jq
         btop fastfetch
-        bash-language-server
     )
 
     step "Installing pacman packages (this may take a while)..."
-    sudo pacman -S --needed --noconfirm "${pacman_pkgs[@]}" >> "$LOG_FILE" 2>&1
+    # Install in smaller groups to show progress and handle failures
+    local failed_pkgs=()
+
+    for pkg in "${pacman_pkgs[@]}"; do
+        echo -ne "    Installing $pkg...\r"
+        if ! sudo pacman -S --needed --noconfirm "$pkg" >> "$LOG_FILE" 2>&1; then
+            warn "Failed to install: $pkg (continuing)"
+            failed_pkgs+=("$pkg")
+        fi
+    done
+
+    if [[ ${#failed_pkgs[@]} -gt 0 ]]; then
+        warn "The following packages failed: ${failed_pkgs[*]}"
+        warn "Check $LOG_FILE for details"
+    fi
+
     log "Pacman packages installed"
+
+    step "Installing bash-language-server via npm..."
+    sudo npm install -g bash-language-server >> "$LOG_FILE" 2>&1 || warn "bash-language-server install failed"
 
     # ── AUR packages ─────────────────────────────────────────
     local aur_pkgs=(
         unar
         swww
         matugen-bin
-        hyprland-qtutils
     )
 
     step "Installing AUR packages..."
-    yay -S --needed --noconfirm "${aur_pkgs[@]}" >> "$LOG_FILE" 2>&1
+    for pkg in "${aur_pkgs[@]}"; do
+        echo -ne "    Installing $pkg...\r"
+        if ! yay -S --needed --noconfirm "$pkg" >> "$LOG_FILE" 2>&1; then
+            warn "AUR: Failed to install $pkg (continuing)"
+        fi
+    done
     log "AUR packages installed"
 }
 
