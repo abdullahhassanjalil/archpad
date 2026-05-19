@@ -1,0 +1,136 @@
+# ============================================================
+#  ~/.config/dunst/dunstrc
+#  Warm retro palette — matches Waybar, Kitty, SDDM
+#  Updated: May 2026
+# ============================================================
+
+[global]
+    # ── Display ──────────────────────────────────────────────
+    monitor              = 0
+    follow               = mouse
+    width                = 320
+    height               = (0, 120)
+    origin               = top-right
+    offset               = (12, 48)
+    scale                = 0
+    notification_limit   = 5
+
+    # ── Appearance ────────────────────────────────────────────
+    progress_bar                  = true
+    progress_bar_height           = 8
+    progress_bar_frame_width      = 1
+    progress_bar_min_width        = 150
+    progress_bar_max_width        = 300
+    progress_bar_corner_radius    = 4
+    progress_bar_corners          = all
+
+    indicate_hidden       = yes
+    transparency          = 8
+    separator_height      = 1
+    padding               = 10
+    horizontal_padding    = 12
+    text_icon_padding     = 8
+    frame_width           = 2
+    frame_color           = "#c94a1a"
+    gap_size              = 6
+    separator_color       = frame
+    sort                  = yes
+    corner_radius         = 10
+    corners               = all
+
+    # ── Text ──────────────────────────────────────────────────
+    font                  = JetBrainsMono Nerd Font 11
+    line_height           = 2
+    markup                = full
+    format                = "<b>%s</b>\n%b"
+    alignment             = left
+    vertical_alignment    = center
+    show_age_threshold    = 60
+    ellipsize             = middle
+    ignore_newline        = no
+    stack_duplicates      = true
+    hide_duplicate_count  = false
+    show_indicators       = yes
+
+    # ── Icons ─────────────────────────────────────────────────
+    enable_recursive_icon_lookup = true
+    icon_theme            = Adwaita
+    icon_position         = left
+    min_icon_size         = 32
+    max_icon_size         = 48
+
+    # ── History ───────────────────────────────────────────────
+    sticky_history        = yes
+    history_length        = 20
+
+    # ── Behaviour ─────────────────────────────────────────────
+    always_run_script     = true
+    title                 = Dunst
+    class                 = Dunst
+    force_xwayland        = false
+
+    # ── Mouse actions ─────────────────────────────────────────
+    mouse_left_click      = close_current
+    mouse_middle_click    = do_action, close_current
+    mouse_right_click     = close_all
+
+    # ── Keyboard shortcuts ────────────────────────────────────
+    close                 = ctrl+space
+    close_all             = ctrl+shift+space
+    history               = ctrl+grave
+    context               = ctrl+shift+period
+
+[urgency_low]
+    # Subtle — muted cream tones
+    background = "#1a1110"
+    foreground = "#f1dfdb"
+    frame_color           = "#c8b898"
+    timeout               = 4
+    #icon = /path/to/icon
+
+[urgency_normal]
+    # Standard — cream bg with rust frame
+    background = "#1a1110"
+    foreground = "#f1dfdb"
+    frame_color = "#ffb4a5"
+    timeout               = 6
+    #icon = /path/to/icon
+
+[urgency_critical]
+    # Urgent — crimson bg with cream text
+    background = "#ffb4ab"
+    foreground = "#f1dfdb"
+    frame_color           = "#6b1010"
+    timeout               = 0
+    #icon = /path/to/icon
+
+# ── App-specific rules ────────────────────────────────────────
+
+[volume]
+    appname               = "Volume"
+    summary               = "*"
+    history_ignore        = yes
+    timeout               = 2
+
+[brightness]
+    appname               = "Brightness"
+    summary               = "*"
+    history_ignore        = yes
+    timeout               = 2
+
+[spotify]
+    appname               = "Spotify"
+    summary               = "*"
+    timeout               = 4
+    frame_color           = "#e07820"
+
+[discord]
+    appname               = "discord"
+    summary               = "*"
+    timeout               = 6
+
+[fullscreen_delay]
+    # Don't show notifications when an app is fullscreen
+    fullscreen            = delay
+
+

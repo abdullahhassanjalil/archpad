@@ -1,0 +1,177 @@
+/* ============================================================
+   Waybar style.css — imports matugen-generated colours
+   The @import pulls in colours extracted from your wallpaper
+   ============================================================ */
+
+@import "colors.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: alpha(@background, 0.92);
+    color: @on_background;
+    transition: background-color 0.3s ease;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    background-color: @surface;
+    border: 1px solid @primary;
+    border-radius: 6px;
+    color: @on_surface;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 4px 6px;
+}
+
+#custom-launcher,
+#workspaces,
+#window,
+#clock,
+#idle_inhibitor,
+#pulseaudio,
+#backlight,
+#network,
+#power-profiles-daemon,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#keyboard-state,
+#tray,
+#custom-power {
+    padding: 2px 10px;
+    border-radius: 6px;
+    margin: 3px 2px;
+    background-color: alpha(@on_background, 0.08);
+    color: @on_background;
+    transition: all 0.2s ease;
+}
+
+#custom-launcher {
+    font-size: 16px;
+    background-color: @primary;
+    color: @on_primary;
+    padding: 0px 12px;
+    border-radius: 6px;
+}
+
+#custom-launcher:hover {
+    background-color: @secondary;
+}
+
+#workspaces {
+    background-color: transparent;
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 2px 8px;
+    border-radius: 5px;
+    color: @on_surface_variant;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: none;
+    min-width: 0;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@primary, 0.15);
+    color: @primary;
+}
+
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: @error;
+    color: @on_background;
+}
+
+#window {
+    color: @on_surface_variant;
+    font-style: italic;
+    background-color: transparent;
+}
+
+#clock {
+    background-color: @primary;
+    color: @on_primary;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 2px 16px;
+    border-radius: 6px;
+}
+
+#clock:hover {
+    background-color: @secondary;
+}
+
+#idle_inhibitor.activated {
+    color: @tertiary;
+    background-color: alpha(@tertiary, 0.15);
+}
+
+#pulseaudio.muted {
+    color: @on_surface_variant;
+}
+
+#network.disconnected {
+    color: @error;
+    background-color: alpha(@error, 0.1);
+}
+
+#battery.charging {
+    color: @primary;
+    background-color: alpha(@primary, 0.1);
+}
+
+#battery.warning:not(.charging) {
+    color: @secondary;
+    background-color: alpha(@secondary, 0.12);
+}
+
+#battery.critical:not(.charging) {
+    color: @on_primary;
+    background-color: @error;
+    animation: critical-flash 1s ease infinite alternate;
+}
+
+#temperature.critical {
+    color: @on_primary;
+    background-color: @error;
+}
+
+@keyframes critical-flash {
+    from { opacity: 1; }
+    to   { opacity: 0.6; }
+}
+
+#custom-power {
+    background-color: @error;
+    color: @on_background;
+    font-size: 15px;
+    padding: 2px 12px;
+    border-radius: 6px;
+    margin-right: 4px;
+}
+
+#tray {
+    background-color: transparent;
+}

@@ -1,0 +1,19 @@
+/* ============================================================
+   Rofi config — ~/.config/rofi/config.rasi
+   ============================================================ */
+
+configuration {
+    modi:                   "drun,run";
+    show-icons:             true;
+    icon-theme:             "Papirus";
+    font:                   "JetBrainsMono Nerd Font 13";
+    drun-display-format:    "{name}";
+    display-drun:           " Apps";
+    display-run:            " Run";
+    terminal:               "kitty";
+    click-to-exit:          true;
+    auto-select:            false;
+    disable-history:        false;
+}
+
+@theme "~/.config/rofi/theme.rasi"

@@ -1,0 +1,127 @@
+/* ============================================================
+   Rofi theme.rasi — imports matugen-generated colours
+   ============================================================ */
+
+@import "colors.rasi"
+
+* {
+    background-color:   @m-background;
+    text-color:         @m-foreground;
+    font:               "JetBrainsMono Nerd Font 13";
+}
+
+window {
+    background-color:   @m-background;
+    border:             2px solid;
+    border-color:       @m-primary;
+    border-radius:      12px;
+    width:              620px;
+    location:           center;
+    padding:            0px;
+}
+
+mainbox {
+    background-color:   transparent;
+    border:             0px;
+    padding:            12px;
+    spacing:            8px;
+    children:           [ inputbar, listview ];
+}
+
+inputbar {
+    background-color:   @m-surface;
+    border:             1px solid;
+    border-color:       @m-outline;
+    border-radius:      8px;
+    padding:            10px 14px;
+    spacing:            8px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @m-primary;
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @m-on-surface;
+    placeholder:        "Search apps…";
+    placeholder-color:  @m-on-surface;
+    cursor:             @m-primary;
+}
+
+listview {
+    background-color:   transparent;
+    border:             0px;
+    padding:            4px 0px;
+    spacing:            2px;
+    lines:              8;
+    columns:            1;
+    fixed-height:       true;
+    scrollbar:          false;
+}
+
+element {
+    background-color:   transparent;
+    text-color:         @m-foreground;
+    border-radius:      7px;
+    padding:            8px 10px;
+    spacing:            10px;
+    orientation:        horizontal;
+}
+
+element.normal.normal {
+    background-color:   transparent;
+    text-color:         @m-foreground;
+}
+
+element.alternate.normal {
+    background-color:   transparent;
+    text-color:         @m-foreground;
+}
+
+element.selected.normal {
+    background-color:   @m-primary;
+    text-color:         @m-on-primary;
+}
+
+element.normal.urgent {
+    text-color:         @m-error;
+}
+
+element.selected.urgent {
+    background-color:   @m-error;
+    text-color:         @m-background;
+}
+
+element.normal.active {
+    text-color:         @m-secondary;
+}
+
+element.selected.active {
+    background-color:   @m-secondary;
+    text-color:         @m-background;
+}
+
+element-icon {
+    background-color:   transparent;
+    size:               24px;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    vertical-align:     0.5;
+}
+
+message {
+    background-color:   transparent;
+    padding:            4px 0px;
+}
+
+textbox {
+    background-color:   transparent;
+    text-color:         @m-on-surface;
+    padding:            6px 10px;
+}

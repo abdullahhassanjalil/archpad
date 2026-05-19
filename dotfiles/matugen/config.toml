@@ -1,0 +1,53 @@
+# ============================================================
+#  ~/.config/matugen/config.toml
+#  Verified syntax from official matugen wiki
+# ============================================================
+
+[config]
+reload_apps = true
+
+[config.reload_apps_list]
+waybar    = true
+kitty     = true
+
+# ── Templates ─────────────────────────────────────────────────
+
+[templates.waybar_colors]
+input_path  = "~/.config/matugen/templates/waybar-colors.css"
+output_path = "~/.config/waybar/colors.css"
+post_hook   = "pkill -SIGUSR2 waybar || true"
+
+[templates.kitty_colors]
+input_path  = "~/.config/matugen/templates/kitty-colors.conf"
+output_path = "~/.config/kitty/colors.conf"
+post_hook   = "pkill -USR1 kitty || true"
+
+[templates.gtk3_colors]
+input_path  = "~/.config/matugen/templates/gtk-colors.css"
+output_path = "~/.config/gtk-3.0/colors.css"
+
+[templates.gtk4_colors]
+input_path  = "~/.config/matugen/templates/gtk-colors.css"
+output_path = "~/.config/gtk-4.0/colors.css"
+
+[templates.rofi_colors]
+input_path  = "~/.config/matugen/templates/rofi-colors.rasi"
+output_path = "~/.config/rofi/colors.rasi"
+
+[templates.hyprland_colors]
+input_path  = "~/.config/matugen/templates/hyprland-colors.lua"
+output_path = "~/.config/hypr/colors.lua"
+post_hook   = "hyprctl reload || true"
+
+[templates.nvim_colors]
+input_path  = "~/.config/matugen/templates/nvim-colors.lua"
+output_path = "~/.config/nvim/lua/themes/matugen_colors.lua"
+post_hook   = "nvim --headless -c 'colorscheme matugen' -c 'qa' 2>/dev/null || true"
+
+[templates.sddm_theme]
+input_path  = "~/.config/matugen/templates/sddm-theme.conf"
+output_path = "~/.config/matugen/sddm-theme-generated.conf"
+post_hook   = "sudo /usr/local/bin/sddm-set-wallpaper-theme 2>/dev/null || true"
+[templates.wlogout_style]
+input_path  = "~/.config/matugen/templates/wlogout-style.css"
+output_path = "~/.config/wlogout/style.css"

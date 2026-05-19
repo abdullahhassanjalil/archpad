@@ -1,0 +1,204 @@
+// -*- mode: jsonc -*-
+// Waybar config — ThinkPad T480 / Hyprland
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "backlight",
+        "network",
+        "power-profiles-daemon",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "battery#bat2",
+        "keyboard-state",
+        "tray",
+        "custom/power"
+    ],
+
+    // ── Left ──────────────────────────────────────────────────────────────────
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        },
+        "format": "{name}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    // ── Centre ────────────────────────────────────────────────────────────────
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%a %d %b %Y}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    // ── Right ─────────────────────────────────────────────────────────────────
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲"
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰 {volume}%",
+        "format-bluetooth-muted": "󰂲",
+        "format-muted": "󰝟",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󱡒",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈂 {ifname} (No IP)",
+        "format-disconnected": "󰤭 Disconnected",
+        "format-alt": "󰤨 {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}\n{gwaddr} via {essid}",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󱪈",
+            "performance": "󰈸",
+            "balanced": "",
+            "power-saver": "󰾆"
+        }
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true,
+        "interval": 2
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+        "interval": 2
+    },
+
+    "temperature": {
+        "thermal-zone": 0,
+        "critical-threshold": 85,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
+        "tooltip": false
+    },
+
+    "battery": {
+        "bat": "BAT0",
+        "adapter": "AC",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "battery#bat2": {
+        "bat": "BAT1",
+        "adapter": "AC",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+
+    "tray": {
+        "spacing": 8
+    },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "wlogout -b 3 -c 10 -r 10 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css"
+}
+}

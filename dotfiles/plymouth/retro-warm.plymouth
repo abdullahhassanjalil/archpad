@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=retro-warm
+Description=Warm retro boot splash — cream, rust, crimson
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/retro-warm
+ScriptFile=/usr/share/plymouth/themes/retro-warm/retro-warm.script
