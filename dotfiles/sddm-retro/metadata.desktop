@@ -1,0 +1,7 @@
+[SddmGreeterTheme]
+Name=retro-warm
+Description=Warm retro palette — cream, rust, crimson
+Author=abdullah
+Version=1.0
+License=MIT
+Type=sddm-theme
