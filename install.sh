@@ -170,7 +170,7 @@ install_packages() {
         xdg-utils xdg-user-dirs
 
         # Display / Wayland
-        wayland wayland-protocols wlroots
+        wayland wayland-protocols
         qt5-wayland qt6-wayland
         qt5ct qt6ct
 
@@ -188,9 +188,6 @@ install_packages() {
 
         # Notifications
         dunst libnotify
-
-        # Session manager
-        wlogout
 
         # Fonts
         ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
@@ -264,6 +261,7 @@ install_packages() {
         unar
         swww
         matugen-bin
+        wlogout
     )
 
     step "Installing AUR packages..."
@@ -301,6 +299,15 @@ enable_services() {
 # ── Deploy dotfiles ───────────────────────────────────────────
 deploy_dotfiles() {
     header "Deploying Dotfiles"
+
+    # Check dotfiles directory exists and is populated
+    if [[ ! -f "$DOTFILES/hypr/hyprland.lua" ]]; then
+        error "Dotfiles not found at $DOTFILES"
+        error "Please copy your config files into the dotfiles/ directory first."
+        error "See README.md for the expected structure."
+        error "Run: bash setup-dotfiles.sh to copy from your current system"
+        exit 1
+    fi
 
     # ── Hyprland ──────────────────────────────────────────────
     step "Configuring Hyprland..."
