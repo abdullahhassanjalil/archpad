@@ -4,6 +4,6 @@
 -- ============================================================
 
 return {
-    active_border   = { colors = { "rgba(ffb4a5ff)", "rgba(dcc48cff)" }, angle = 45 },
-    inactive_border = "rgba(534340ff)",
+    active_border   = { colors = { "rgba(8ad6b7ff)", "rgba(a6cce0ff)" }, angle = 45 },
+    inactive_border = "rgba(404944ff)",
 }

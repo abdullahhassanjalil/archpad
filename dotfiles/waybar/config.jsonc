@@ -1,14 +1,287 @@
 // -*- mode: jsonc -*-
 // Waybar config — ThinkPad T480 / Hyprland
+// Three bars: one per monitor, each with its own persistent workspaces
+
+// ============================================================
+//  BAR 1 — DP-7 (left Dell, workspaces 7-9)
+// ============================================================
+[
 {
     "layer": "top",
+    "output": "DP-7",
     "position": "top",
     "height": 32,
     "spacing": 4,
 
     "modules-left": [
         "custom/launcher",
-        "hyprland/workspaces",
+        "hyprland/workspaces#dp7",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "tray",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "hyprland/workspaces#dp7": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "persistent-workspaces": {
+            "7": ["DP-7"],
+            "8": ["DP-7"],
+            "9": ["DP-7"]
+        },
+        "format": "{name}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%a %d %b %Y}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲"
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰 {volume}%",
+        "format-bluetooth-muted": "󰂲",
+        "format-muted": "󰝟",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󱡒",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈂 {ifname} (No IP)",
+        "format-disconnected": "󰤭 Disconnected",
+        "format-alt": "󰤨 {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}\n{gwaddr} via {essid}",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true,
+        "interval": 2
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+        "interval": 2
+    },
+
+    "tray": {
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout -b 3 -c 10 -r 10 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css"
+    }
+},
+
+// ============================================================
+//  BAR 2 — DP-5 (middle Dell, workspaces 4-6)
+// ============================================================
+{
+    "layer": "top",
+    "output": "DP-5",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces#dp5",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "power-profiles-daemon",
+        "cpu",
+        "memory",
+        "temperature",
+        "tray",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+
+    "hyprland/workspaces#dp5": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "persistent-workspaces": {
+            "4": ["DP-5"],
+            "5": ["DP-5"],
+            "6": ["DP-5"]
+        },
+        "format": "{name}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%a %d %b %Y}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲"
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "󰂰 {volume}%",
+        "format-bluetooth-muted": "󰂲",
+        "format-muted": "󰝟",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󱡒",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": "󰤨 {essid} ({signalStrength}%)",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "format-linked": "󰈂 {ifname} (No IP)",
+        "format-disconnected": "󰤭 Disconnected",
+        "format-alt": "󰤨 {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}\n{gwaddr} via {essid}",
+        "on-click-right": "nm-connection-editor"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "󱪈",
+            "performance": "󰈸",
+            "balanced": "",
+            "power-saver": "󰾆"
+        }
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true,
+        "interval": 2
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+        "interval": 2
+    },
+
+    "temperature": {
+        "thermal-zone": 0,
+        "critical-threshold": 85,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout -b 3 -c 10 -r 10 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css"
+    }
+},
+
+// ============================================================
+//  BAR 3 — eDP-1 (laptop screen, workspaces 1-3)
+// ============================================================
+{
+    "layer": "top",
+    "output": "eDP-1",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces#edp1",
         "hyprland/window"
     ],
     "modules-center": [
@@ -30,32 +303,23 @@
         "custom/power"
     ],
 
-    // ── Left ──────────────────────────────────────────────────────────────────
-
     "custom/launcher": {
         "format": "󰣇",
         "tooltip": false,
         "on-click": "rofi -show drun"
     },
 
-    "hyprland/workspaces": {
+    "hyprland/workspaces#edp1": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "warp-on-scroll": false,
         "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
+            "1": ["eDP-1"],
+            "2": ["eDP-1"],
+            "3": ["eDP-1"]
         },
         "format": "{name}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
             "urgent": "",
             "active": "",
             "default": ""
@@ -67,15 +331,11 @@
         "separate-outputs": true
     },
 
-    // ── Centre ────────────────────────────────────────────────────────────────
-
     "clock": {
         "format": " {:%H:%M}",
         "format-alt": " {:%a %d %b %Y}",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
     },
-
-    // ── Right ─────────────────────────────────────────────────────────────────
 
     "idle_inhibitor": {
         "format": "{icon}",
@@ -127,7 +387,7 @@
         "format-icons": {
             "default": "󱪈",
             "performance": "󰈸",
-            "balanced": "",
+            "balanced": "",
             "power-saver": "󰾆"
         }
     },
@@ -196,9 +456,10 @@
         "spacing": 8
     },
 
-  "custom/power": {
-    "format": "⏻",
-    "tooltip": false,
-    "on-click": "wlogout -b 3 -c 10 -r 10 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css"
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout -b 3 -c 10 -r 10 --layout ~/.config/wlogout/layout --css ~/.config/wlogout/style.css"
+    }
 }
-}
+]

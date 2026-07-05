@@ -31,13 +31,29 @@ local mainMod     = "SUPER"
 --  MONITOR
 -- ============================================================
 
+-- Right external Dell (leftmost)
 hl.monitor({
-    output   = "",
-    mode     = "preferred",
-    position = "auto",
-    scale    = 1.60,
+    output   = "DP-7",
+    mode     = "1920x1080@60.00Hz",
+    position = "0x0",
+    scale    = 1.00,
 })
 
+-- Left external Dell (middle)
+hl.monitor({
+    output   = "DP-5",
+    mode     = "1920x1080@60.00Hz",
+    position = "1920x0",
+    scale    = 1.00,
+})
+
+-- Laptop screen (rightmost)
+hl.monitor({
+    output   = "eDP-1",
+    mode     = "2560x1440@60.00Hz",
+    position = "3840x0",
+    scale    = 1.60,
+})
 
 -- ============================================================
 --  ENVIRONMENT VARIABLES
@@ -54,7 +70,9 @@ hl.env("XDG_SESSION_DESKTOP",  "Hyprland")
 hl.env("XCURSOR_SIZE",         "24")
 hl.env("XCURSOR_THEME",        "Adwaita")
 hl.env("HYPRCURSOR_SIZE",      "24")
-
+hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+hl.env("WLR_NO_HARDWARE_CURSORS",   "1")
+hl.env("NVD_BACKEND",               "direct")
 
 -- ============================================================
 --  AUTOSTART
@@ -67,6 +85,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("dunst")
     hl.exec_cmd("hypridle")
+    hl.exec_cmd("bash ~/.config/hypr/monitors.sh")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 end)
 

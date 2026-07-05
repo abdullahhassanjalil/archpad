@@ -82,24 +82,24 @@
 
 [urgency_low]
     # Subtle — muted cream tones
-    background = "#1a1110"
-    foreground = "#f1dfdb"
+    background = "#0f1512"
+    foreground = "#dee4df"
     frame_color           = "#c8b898"
     timeout               = 4
     #icon = /path/to/icon
 
 [urgency_normal]
     # Standard — cream bg with rust frame
-    background = "#1a1110"
-    foreground = "#f1dfdb"
-    frame_color = "#ffb4a5"
+    background = "#0f1512"
+    foreground = "#dee4df"
+    frame_color = "#8ad6b7"
     timeout               = 6
     #icon = /path/to/icon
 
 [urgency_critical]
     # Urgent — crimson bg with cream text
     background = "#ffb4ab"
-    foreground = "#f1dfdb"
+    foreground = "#dee4df"
     frame_color           = "#6b1010"
     timeout               = 0
     #icon = /path/to/icon

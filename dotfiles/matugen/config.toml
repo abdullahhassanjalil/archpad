@@ -51,3 +51,4 @@ post_hook   = "sudo /usr/local/bin/sddm-set-wallpaper-theme 2>/dev/null || true"
 [templates.wlogout_style]
 input_path  = "~/.config/matugen/templates/wlogout-style.css"
 output_path = "~/.config/wlogout/style.css"
+

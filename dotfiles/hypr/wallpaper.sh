@@ -99,4 +99,16 @@ if [[ -f ~/.config/waybar/colors.css ]]; then
     fi
 fi
 
+# ── Update fastfetch logo colours ────────────────────────────
+if [[ -f ~/.config/waybar/colors.css ]]; then
+    C1=$(grep "@define-color tertiary " ~/.config/waybar/colors.css | grep -o '#[0-9a-fA-F]*' | head -1)
+    C2=$(grep "@define-color primary " ~/.config/waybar/colors.css | grep -o '#[0-9a-fA-F]*' | head -1)
+    if [[ -n "$C1" && -n "$C2" ]]; then
+        # Convert hex to RGB for fastfetch
+        R1=$((16#${C1:1:2})); G1=$((16#${C1:3:2})); B1=$((16#${C1:5:2}))
+        R2=$((16#${C2:1:2})); G2=$((16#${C2:3:2})); B2=$((16#${C2:5:2}))
+        sed -i "s/^fastfetch .*/fastfetch --logo-color-1 "38;2;${R1};${G1};${B1}" --logo-color-2 "38;2;${R2};${G2};${B2}"/" ~/.zshrc
+    fi
+fi
+
 echo "Done — theme applied from: $(basename "$WALLPAPER")"
