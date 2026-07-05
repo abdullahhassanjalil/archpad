@@ -231,7 +231,7 @@ Rectangle {
 
     function doLogin() {
         errorText.text = ""
-        sddm.login(userModel.lastUser, password.text, session.index)
+	sddm.login(userModel.data(userModel.index(0, 0), Qt.UserRole + 1) || userModel.lastUser, password.text, session.index)
     }
 
     Connections {
