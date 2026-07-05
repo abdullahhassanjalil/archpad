@@ -1,0 +1,70 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "kitty",
+    "source": "$(find \"${XDG_CONFIG_HOME:-$HOME/.config}/fastfetch/png/\" -name \"arch_logo.png\" | shuf -n 1)",
+    "padding": {
+      "top": 25,
+      "right": 10
+    },
+    "height": 1,
+    "width": 22
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    {
+      "type": "title",
+      "format": "\u001b[1m{6}@{8}\u001b[0m"
+    },
+    "break",
+    {
+      "type": "os",
+      "key": "\u001b[34m OS\u001b[0m",
+      "format": "{pretty-name}"
+    },
+    {
+      "type": "kernel",
+      "key": "\u001b[34m KN\u001b[0m",
+      "format": "{version}"
+    },
+    {
+      "type": "wm",
+      "key": "\u001b[32m WM\u001b[0m"
+    },
+    {
+      "type": "de",
+      "key": "\u001b[32m DE\u001b[0m"
+    },
+    {
+      "type": "cpu",
+      "key": "\u001b[33m CP\u001b[0m",
+      "format": "{name} ({cores-physical}c)"
+    },
+    {
+      "type": "gpu",
+      "key": "\u001b[35m GP\u001b[0m",
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "key": "\u001b[36m MEM\u001b[0m",
+      "format": "{used} / {total}"
+    },
+    {
+      "type": "disk",
+      "key": "\u001b[36m DSK\u001b[0m",
+      "format": "{used} / {total} ({percentage})"
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 1,
+      "symbol": "circle",
+      "block": {
+        "width": 3
+      }
+    }
+  ]
+}
