@@ -158,7 +158,7 @@ install_packages() {
         yazi ffmpegthumbnailer poppler fd ripgrep fzf zoxide imagemagick
 
         # Notifications + session
-        dunst libnotify wlogout
+        dunst libnotify
 
         # Fonts
         ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
@@ -193,7 +193,7 @@ install_packages() {
         nwg-look adwaita-icon-theme
 
         # Shell
-        zsh oh-my-zsh-git
+        zsh
 
         # Utils
         git curl wget unzip tar gzip jq btop fastfetch
@@ -206,6 +206,8 @@ install_packages() {
         wlogout
         hyprpaper
         papirus-folders-git
+        oh-my-zsh-git
+        wlogout
     )
 
     step "Installing pacman packages..."
