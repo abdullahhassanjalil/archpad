@@ -472,8 +472,6 @@ CHROOT
 install_desktop() {
     header "Installing Desktop Environment"
 
-    local step() { echo -e "${BOLD}  → $*${NC}"; }
-
     step "Cloning archpad dotfiles..."
     arch-chroot /mnt bash << CHROOT
 set -e
