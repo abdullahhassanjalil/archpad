@@ -472,11 +472,11 @@ install_desktop() {
     step "Cloning archpad dotfiles..."
     arch-chroot /mnt bash << CHROOT
 set -e
-cd /home/$USERNAME
 
 # Clone the repo as the user
-sudo -u $USERNAME git clone https://github.com/abdullahhassanjalil/archpad.git
-chown -R $USERNAME:$USERNAME archpad
+cd /home/$USERNAME
+git clone https://github.com/abdullahhassanjalil/archpad.git
+chown -R $USERNAME:$USERNAME /home/$USERNAME/archpad
 
 CHROOT
 
