@@ -48,13 +48,13 @@ echo "$WALLPAPER" > "$LAST_WALL"
 
 # ── Ensure swww daemon is running ─────────────────────────────
 
-if ! pgrep -x swww-daemon > /dev/null 2>&1; then
-    swww-daemon --no-cache &
+if ! pgrep -x awww-daemon > /dev/null 2>&1; then
+    awww-daemon --no-cache &
     sleep 1
 fi
 
 # ── Set wallpaper via swww directly ──────────────────────────
-swww img "$WALLPAPER"     --transition-type  grow     --transition-pos   center     --transition-duration 1.5     --transition-fps   60
+awww img "$WALLPAPER"     --transition-type  grow     --transition-pos   center     --transition-duration 1.5     --transition-fps   60
 
 # ── Run matugen for colour extraction only (no wallpaper) ────
 matugen image "$WALLPAPER" --mode dark --source-color-index 0
