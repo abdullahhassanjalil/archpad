@@ -333,7 +333,7 @@ install_base() {
     # Base packages
     local base_pkgs=(
         base base-devel linux linux-firmware linux-headers
-        "$FILESYSTEM"
+        btrfs-progs
         efibootmgr
         networkmanager
         git curl wget
@@ -341,9 +341,6 @@ install_base() {
         zsh
         nano vim
     )
-
-    # Add btrfs-progs if needed
-    [[ "$FILESYSTEM" == "btrfs" ]] && base_pkgs+=(btrfs-progs)
 
     step "Installing base packages..."
     pacstrap -K /mnt "${base_pkgs[@]}"
