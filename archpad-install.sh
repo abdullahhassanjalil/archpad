@@ -728,7 +728,7 @@ papirus-folders -C orange --theme Papirus-Dark >> "\$LOG" 2>&1 || true
 
 nvim --headless "+Lazy! sync" +qa >> "\$LOG" 2>&1 || true
 
-echo -e "\${GREEN}\${BOLD}Desktop setup complete!\${NC}"
+echo "Desktop setup complete!"
 SETUP
 
     chmod +x /mnt/home/$USERNAME/archpad/desktop-setup.sh
