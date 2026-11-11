@@ -30,7 +30,7 @@ A minimal Arch Linux install with:
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/hyprland-dotfiles
+git clone https://github.com/abdullahhassanjalil/hyprland-dotfiles
 cd hyprland-dotfiles
 bash install.sh
 ```
